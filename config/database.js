@@ -1,5 +1,13 @@
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
-module.exports = {
-  url: 'mongodb://project4:wdidtla37@ds139267.mlab.com:39267/recipe-wars'
-}
+// mongoose.connect(url);
+mongoose.connect(process.env.DATABASE_URL);
+
+// database connection event
+mongoose.connection.once('open', function() {
+  console.log(`Mongoose connected to: ${mongoose.connection.host}:${mongoose.connection.port}`)
+})
+
+module.exports = mongoose;
+

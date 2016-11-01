@@ -5,11 +5,12 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  googleID: String,
   email: {
     type: String,
     required: true
   }
 });
+
+userSchema.plugin(require('mongoose-bcrypt'));
 
 module.exports = mongoose.model('User', userSchema);

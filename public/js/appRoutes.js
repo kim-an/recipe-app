@@ -9,10 +9,21 @@
 
   function AppRoutes($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state("homePage", {
+      .state("home", {
         url: "/",
-        templateUrl: "/views/home.html",
-        controller: "MainController"
+        templateUrl: "../templates/home.html",
+        // controller: "WelcomeController as vm"
+      })
+      .state("welcome", {
+        url: "/welcome",
+        resolve: {
+          UserService: 'UserService',
+          user: function(UserService) {
+            return UserService.getUser();
+          }
+        },
+        templateUrl: '../templates/welcome.html',
+        controller: "WelcomeController as vm"
       })
 
       $urlRouterProvider.otherwise("/");
