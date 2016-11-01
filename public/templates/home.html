@@ -6,5 +6,6 @@
   <tr ng-repeat="r in vm.recipies">
     <td>{{r.label}}</td>
     <td><img ng-src="{{r.image}}"></td>
+    <td><button ng-click="vm.showDetail(r.$$hashKey)" class="btn btn-primary btn-sm">Details</button></td>
   </tr>
 </table>

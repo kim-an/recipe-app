@@ -5,19 +5,21 @@
     .module("recipe-wars")
     .controller("HomeController", HomeController);
 
-  HomeController.$inject = ['$http'];
+  HomeController.$inject = ['$http', '$state', 'RecipeService'];
 
-  function HomeController($http) {
+  function HomeController($http, $state, RecipeService) {
     var vm = this;
 
     vm.search = function() {
-      $http.get("/api/search?search=" + vm.searchText)
-        .then(function(res) {
-          console.log(res.data);
-          vm.recipies = res.data;
+      RecipeService.search(vm.searchText)
+        .then(function(recipies) {
+          vm.recipies = recipies;
         });
     }
 
+    vm.showDetail = function(recipe) {
+      $state.go('details', {recipe:recipe});
+    };
 
   }
 

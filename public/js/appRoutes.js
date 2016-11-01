@@ -30,6 +30,11 @@
         templateUrl: "templates/signup.html",
         controller: "SignupController as vm"
       })
+      .state("details", {
+        url: "/details/:recipe",
+        templateUrl: 'templates/details.html',
+        controller: "DetailsController as vm"
+      });
 
       $urlRouterProvider.otherwise("/");
   }
