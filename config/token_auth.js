@@ -46,7 +46,18 @@ function create(req, res, next) {
     });
 }
 
+function signup(req, res, next) {
+  User.create(req.body)
+    .then((user) => {
+      var token = jwt.sign({user: user}, secret, jwtOptions);
+      return res.json({
+        token: token
+      });
+    });
+}
+
 module.exports = {
   create: create,
-  authenticate: authenticate
+  authenticate: authenticate,
+  signup: signup
 }

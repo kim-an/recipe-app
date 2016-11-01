@@ -1,1 +1,10 @@
 <h1>home</h1>
+
+<input type="search" placeholder="Search for..." ng-change="vm.search()" ng-model="vm.searchText" ng-model-options="{debounce:500}">
+
+<table class="table table-striped">
+  <tr ng-repeat="r in vm.recipies">
+    <td>{{r.label}}</td>
+    <td><img ng-src="{{r.image}}"></td>
+  </tr>
+</table>

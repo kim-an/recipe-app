@@ -11,8 +11,8 @@
     $stateProvider
       .state("home", {
         url: "/",
-        templateUrl: "../templates/home.html",
-        // controller: "WelcomeController as vm"
+        templateUrl: "templates/home.html",
+        controller: "HomeController as vm"
       })
       .state("welcome", {
         url: "/welcome",
@@ -22,8 +22,13 @@
             return UserService.getUser();
           }
         },
-        templateUrl: '../templates/welcome.html',
+        templateUrl: 'templates/welcome.html',
         controller: "WelcomeController as vm"
+      })
+      .state("signup", {
+        url:"/signup",
+        templateUrl: "templates/signup.html",
+        controller: "SignupController as vm"
       })
 
       $urlRouterProvider.otherwise("/");

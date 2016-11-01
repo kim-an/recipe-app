@@ -10,13 +10,13 @@
   function UserService($http, AuthTokenService, $window, $log ) {
     var vm = this;
 
-    var baseUrl = 'http://localhost:3000';
     var user = null;
 
     var service = {
       login: login,
       logout: logout,
-      getUser: getUser
+      getUser: getUser,
+      signup: signup
     }
 
     return service;
@@ -41,14 +41,27 @@
     }
 
     function getUser() {
-      return user;
+      if (user) return user;
+      var token = AuthTokenService.getToken();
+      if ( token ) {
+        user = decode(token);
+        return user;
+      }
     }
 
     function decode(token) {
       return JSON.parse($window.atob(token.split('.')[1])).user;
     }
 
-    function signup(){
+    function signup(newUser){
+      return $http.post('/api/signup', newUser)
+      .then((response) => {
+        var token = response.data.token;
+        AuthTokenService.setToken(token);
+        user = decode(token);
+        return user;
+        console.log(user);
+      });
 
     }
   }

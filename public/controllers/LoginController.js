@@ -12,6 +12,7 @@
     vm.login = login;
     vm.logout = logout;
     vm.errors = null;
+    vm.signup = signup;
     vm.getUser = function() {
       return UserService.getUser();
     };
@@ -32,6 +33,11 @@
       UserService.logout();
       $state.go('home')
     }
+
+    function signup() {
+      $state.go('signup');
+    }
   }
+
 
 })();
