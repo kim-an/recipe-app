@@ -10,6 +10,7 @@
   function LoginController(UserService, $state, $log) {
     var vm = this;
     vm.login = login;
+    vm.logout = logout;
     vm.errors = null;
     vm.getUser = function() {
       return UserService.getUser();
@@ -18,9 +19,6 @@
     function login() {
       UserService.login(vm.username, vm.password)
         .then((user) => {
-
-console.log('user', user)
-
           $state.go('welcome')
         })
         .catch((response) => {
@@ -28,6 +26,11 @@ console.log('user', user)
           vm.username = '';
           vm.errors = response.data;
         });
+    }
+
+    function logout() {
+      UserService.logout();
+      $state.go('home')
     }
   }
 

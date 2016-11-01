@@ -47,6 +47,10 @@
     function decode(token) {
       return JSON.parse($window.atob(token.split('.')[1])).user;
     }
+
+    function signup(){
+
+    }
   }
 
 
