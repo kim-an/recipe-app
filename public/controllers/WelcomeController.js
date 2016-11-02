@@ -5,9 +5,9 @@
     .module('recipe-wars')
     .controller('WelcomeController', WelcomeController);
 
-  WelcomeController.$inject = ['UserService', '$stateParams', '$state', '$http', '$log', 'user'];
+  WelcomeController.$inject = ['UserService', '$stateParams', '$state', '$http', '$log', 'user', 'RecipeService'];
 
-  function WelcomeController(UserService, $stateParams, $state, $http, $log, user) {
+  function WelcomeController(UserService, $stateParams, $state, $http, $log, user, RecipeService) {
     var vm = this;
     vm.user = user;
     vm.allUsers = allUsers;
@@ -21,6 +21,22 @@
       UserService.logout();
       $state.go('index')
     }
+
+      vm.search = function() {
+        RecipeService.search(vm.searchText)
+          .then(function(recipies) {
+            vm.recipies = recipies;
+          });
+      }
+
+      vm.showDetail = function(recipe) {
+        $state.go('details', {recipe:recipe});
+      };
+
+      vm.postRecipe = function(){
+        $state.go('postRecipe')
+      }
+
   }
 
 

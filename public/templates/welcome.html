@@ -1,12 +1,24 @@
 <div class="container">
   <h1>Recipe Wars</h1>
 </div>
-<h3>Hello, {{vm.user.username}}</h3>
+<div class="container">
+  <button class="btn btn-default" ng-click="vm.postRecipe()">Post A Recipe</button>
+</div>
+<h3>Hello, {{vm.user.username}}!</h3>
 <div class="input-group">
   <span class="input-group-btn">
     <button class="btn btn-default" type="button">Search</button>
   </span>
   <input type="text" class="form-control" placeholder="Search for..." ng-change="vm.search()" ng-model="vm.searchText" ng-model-options="{debounce:500}">
 </div>
+
+<table class="table table-striped">
+  <tr ng-repeat="r in vm.recipies">
+    <td>{{r.label}}</td>
+    <td><img ng-src="{{r.image}}"></td>
+    <td><button ng-click="vm.showDetail(r.$$hashKey)" class="btn btn-primary btn-sm">Details</button></td>
+  </tr>
+</table>
+
 
 
