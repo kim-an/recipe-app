@@ -1,4 +1,5 @@
 var request = require('request');
+var Recipe = require('../models/recipe');
 
 var appId = process.env.APPLICATION_ID;
 var appKey = process.env.APPLICATION_KEY;
@@ -13,6 +14,28 @@ function search(req, res, next) {
   });
 }
 
+function create(req, res) {
+  Recipe.create(req.body)
+    .then(function(recipe) {
+      res.json(recipe);
+    })
+    .catch(function(err) {
+      res.status(400).json(err);
+    });
+}
+
+function myRecipes(req, res) {
+  Recipe.find({user: req.params.userId})
+    .then(function(recipes) {
+      res.json(recipes);
+    })
+    .catch(function(err) {
+      res.status(400).json(err);
+    });
+}
+
 module.exports = {
-  search: search
+  search: search,
+  create: create,
+  myRecipes: myRecipes
 };

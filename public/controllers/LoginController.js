@@ -17,6 +17,10 @@
       return UserService.getUser();
     };
 
+    vm.myRecipes = function() {
+      $state.go('myRecipes');
+    };
+
     function login() {
       UserService.login(vm.username, vm.password)
         .then((user) => {
@@ -37,6 +41,7 @@
     function signup() {
       $state.go('signup');
     }
+
   }
 
 

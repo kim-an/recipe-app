@@ -1,0 +1,39 @@
+<div class="container">
+  <form id="postRecipeForm">
+    <div class="form-group">
+      <label for="title">Recipe Title: </label>
+      <input type="text" class="form-control" ng-model="vm.newRecipe.label">
+    </div>
+    <div class="form-group">
+      <label for="image">Image Link:</label>
+      <input type="url" class="form-control" ng-model="vm.newRecipe.image">
+    </div>
+    <div class="form-group">
+      <label for="serving-size">Serving Size: </label>
+      <input type="text" class="form-control" id="servingSize">
+    </div>
+    <div class="form-group">
+      <label for="ingredients">Ingredients: </label>
+      <span ng-repeat="i in vm.newRecipe.ingredientLines track by $index">
+        <input ng-model="vm.newRecipe.ingredientLines[$index]" type="text" class="form-control" name="ingredients">
+        <button ng-click="vm.newRecipe.ingredientLines.splice($index, 1)">X</button>
+      </span>
+      <button class="btn btn-default addButton" type="button" ng-click="vm.newRecipe.ingredientLines.push('')"><i class="plus"></i></button>
+    </div>
+
+    <div class="form-group">
+      <label for="instructions">Instructions: </label>
+      <span ng-repeat="i in vm.newRecipe.instructions track by $index">
+        <input ng-model="vm.newRecipe.instructions[$index]" type="text" class="form-control" name="instructions">
+        <button ng-click="vm.newRecipe.instructions.splice($index, 1)">X</button>
+        <button class="btn btn-default addButton" type="button" ng-click="vm.newRecipe.instructions.push('')"><i class="minus"></i></button>
+      </span>
+    </div>
+
+  <div class="form-group">
+      <button  ng-click="vm.postRecipe()" type="submit" class="btn btn-default">Post Recipe!</button>
+    </div>
+  </form>
+
+</div>
+

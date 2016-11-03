@@ -5,30 +5,49 @@
     .module("recipe-wars")
     .factory("RecipeService", RecipeService);
 
-  RecipeService.$inject = ["$http"]
+  RecipeService.$inject = ["$http", "$window", "UserService"]
 
-  function RecipeService($http) {
+  function RecipeService($http, $window, UserService) {
 
-    var searchRecipies = null;
+    var searchRecipes = null;
 
     var service = {
       search: search,
-      getRecipe: getRecipe
+      getRecipe: getRecipe,
+      postRecipe: postRecipe,
+      getMyRecipes: getMyRecipes
     };
 
     return service;
 
     function search(searchText) {
+      $window.localStorage.setItem('searchText', searchText);
       return $http.get("/api/search?search=" + searchText)
         .then(function(res) {
           console.log(res.data);
-          searchRecipies = res.data;
+          searchRecipes = res.data;
           return res.data;
         });
     }
 
-    function getRecipe(recipe) {
-      return searchRecipies.find(r => r.$$hashKey === recipe);
+    function getRecipe(label) {
+      return searchRecipes.find(r => r.label === label);
+    }
+
+    function postRecipe(newRecipe){
+      console.log('postRecipe')
+      newRecipe.user = UserService.getUser()._id;
+      return $http.post('/api/recipes', newRecipe)
+        .then((response) => {
+          return response.data;
+        });
+    }
+
+    function getMyRecipes() {
+      return $http.get('/api/recipes/' + UserService.getUser()._id)
+        .then(function(resp) {
+          return resp.data;
+        });
     }
 
   }

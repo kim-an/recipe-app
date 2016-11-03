@@ -33,7 +33,29 @@
       .state("details", {
         url: "/details/:recipe",
         templateUrl: 'templates/details.html',
-        controller: "DetailsController as vm"
+        controller: "DetailsController as vm",
+        resolve: {
+          RecipeService: 'RecipeService',
+          $window: '$window',
+          recipes: function(RecipeService, $window) {
+            if ($window.localStorage.searchText) {
+              console.log($window.localStorage.searchText)
+              return RecipeService.search($window.localStorage.searchText);
+            } else {
+              return true;
+            }
+          }
+        }
+      })
+      .state("postRecipe", {
+        url: "/postRecipe/:user",
+        templateUrl: "/templates/postRecipe.html",
+        controller: "RecipeController as vm"
+      })
+      .state('myRecipes', {
+        url: '/my-recipes',
+        templateUrl: "/templates/myRecipes.html",
+        controller: "RecipeController as vm"
       });
 
       $urlRouterProvider.otherwise("/");

@@ -5,14 +5,15 @@ var recipeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  yield: number,
-  ingredientLines:{
-    []
+  yield: Number,
+  ingredientLines: [],
+  instructions: [],
+  image: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   },
-  instructions: {
-    type: String
-  },
-  image: String
+  rating: Number
 });
 
 module.exports = mongoose.model('Recipe', recipeSchema)

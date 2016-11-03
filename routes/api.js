@@ -7,5 +7,9 @@ router.post('/login', token.create);
 router.post('/signup', token.signup);
 router.get('/search', recipesController.search);
 
+router.get('/recipes/:userId', recipesController.myRecipes);
+router.post('/recipes', recipesController.create);
+
+
 
 module.exports = router;

@@ -1,11 +1,9 @@
-<div class="container">
-  <h1>Recipe Wars</h1>
-</div>
-<div class="container">
-  <button class="btn btn-default" ng-click="vm.postRecipe()">Post A Recipe</button>
-</div>
+
 <h3>Hello, {{vm.user.username}}!</h3>
-<div class="input-group">
+<div class="container">
+  <button id="post-recipe" class="btn btn-default" ng-click="vm.postRecipe()">Post A Recipe</button>
+</div>
+<div class="input-group" id="search-box">
   <span class="input-group-btn">
     <button class="btn btn-default" type="button">Search</button>
   </span>
@@ -13,10 +11,10 @@
 </div>
 
 <table class="table table-striped">
-  <tr ng-repeat="r in vm.recipies">
+  <tr ng-repeat="r in vm.recipes">
     <td>{{r.label}}</td>
     <td><img ng-src="{{r.image}}"></td>
-    <td><button ng-click="vm.showDetail(r.$$hashKey)" class="btn btn-primary btn-sm">Details</button></td>
+    <td><button ng-click="vm.showDetail(r.label)" class="btn btn-primary btn-sm">Details</button></td>
   </tr>
 </table>
 

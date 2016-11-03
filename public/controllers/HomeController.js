@@ -12,8 +12,8 @@
 
     vm.search = function() {
       RecipeService.search(vm.searchText)
-        .then(function(recipies) {
-          vm.recipies = recipies;
+        .then(function(recipes) {
+          vm.recipes = recipes;
         });
     }
 
