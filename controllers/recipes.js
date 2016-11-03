@@ -14,6 +14,12 @@ function search(req, res, next) {
   });
 }
 
+function index(req, res) {
+  Recipe.find({}, function(err, recipes) {
+    res.json(recipes);
+  })
+}
+
 function create(req, res) {
   Recipe.create(req.body)
     .then(function(recipe) {
@@ -45,20 +51,15 @@ function deleteRecipe(req, res) {
 }
 
 function updateRecipe(req, res) {
-  Recipe.findById(req.params.id)
-    .then(function(recipe) {
-      Recipe.update(req.body)
-      .then(function(recipe) {
-        res.json(recipes)
-      })
-      res.status(200).json({msg: 'recipe updated'});
-    })
-    .catch(function(err) {
-      res.status(400).json(err);
-    });
+  var id = req.params.id;
+  Recipe.findOneAndUpdate({_id: id}, req.body, {new: true}, function(err, recipe){
+    if (err) return next(error);
+    return res.json(recipe);
+  });
 }
 
 module.exports = {
+  index: index,
   search: search,
   create: create,
   myRecipes: myRecipes,

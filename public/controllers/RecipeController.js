@@ -42,7 +42,7 @@
     }
 
     vm.update = function(recipe) {
-      console.log('update recipe')
+      console.log(recipe)
       RecipeService.updateRecipe(recipe)
         .then(function() {
           RecipeService.getMyRecipes()
@@ -50,6 +50,7 @@
             $state.go('myRecipeDetail')
           })
         })
+        .catch(console.log)
     }
 
     vm.deleteRecipe = function(recipe) {
