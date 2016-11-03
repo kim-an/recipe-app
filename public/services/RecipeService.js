@@ -15,7 +15,8 @@
       search: search,
       getRecipe: getRecipe,
       postRecipe: postRecipe,
-      getMyRecipes: getMyRecipes
+      getMyRecipes: getMyRecipes,
+      deleteRecipe: deleteRecipe
     };
 
     return service;
@@ -48,6 +49,10 @@
         .then(function(resp) {
           return resp.data;
         });
+    }
+
+    function deleteRecipe(recipe) {
+      return $http.delete('/api/recipes/' + recipe._id);
     }
 
   }

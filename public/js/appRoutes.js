@@ -49,14 +49,20 @@
       })
       .state("postRecipe", {
         url: "/postRecipe/:user",
-        templateUrl: "/templates/postRecipe.html",
+        templateUrl: "templates/postRecipe.html",
         controller: "RecipeController as vm"
       })
       .state('myRecipes', {
         url: '/my-recipes',
-        templateUrl: "/templates/myRecipes.html",
+        templateUrl: "templates/myRecipes.html",
         controller: "RecipeController as vm"
-      });
+      })
+      .state("myRecipeDetail", {
+        url: '/recipe-detail/:label',
+        templateUrl: "templates/myRecipeDetail.html",
+        controller: "RecipeController as vm"
+      })
+      ;
 
       $urlRouterProvider.otherwise("/");
   }

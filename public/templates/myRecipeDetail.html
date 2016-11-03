@@ -1,0 +1,25 @@
+
+
+<div class="container" id="recipeTitle">
+  <h1>{{vm.selectedRecipe.label}}</h1>
+</div>
+
+<div class="container">
+  <img ng-src="{{vm.selectedRecipe.image}}" alt="food-image">
+</div>
+
+<div class="container" id="servingSize">
+  <p>Serving Size: {{vm.selectedRecipe.yield}}</p>
+</div>
+
+<div class="container" id="ingredients">
+  <ul>Ingredient List</ul>
+    <li ng-repeat="i in vm.selectedRecipe.ingredientLines">{{i}}</li>
+</div>
+
+<div class="container" id="instructions">
+  <ul>Instructions
+    <li ng-repeat="i in vm.selectedRecipe.instructions">{{i}}</li>
+  </ul>
+</div>
+

@@ -9,7 +9,7 @@ router.get('/search', recipesController.search);
 
 router.get('/recipes/:userId', recipesController.myRecipes);
 router.post('/recipes', recipesController.create);
-
+router.delete('/recipes/:id', recipesController.delete);
 
 
 module.exports = router;
