@@ -44,9 +44,24 @@ function deleteRecipe(req, res) {
     });
 }
 
+function updateRecipe(req, res) {
+  Recipe.findById(req.params.id)
+    .then(function(recipe) {
+      Recipe.update(req.body)
+      .then(function(recipe) {
+        res.json(recipes)
+      })
+      res.status(200).json({msg: 'recipe updated'});
+    })
+    .catch(function(err) {
+      res.status(400).json(err);
+    });
+}
+
 module.exports = {
   search: search,
   create: create,
   myRecipes: myRecipes,
-  delete: deleteRecipe
+  delete: deleteRecipe,
+  update: updateRecipe
 };

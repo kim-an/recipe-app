@@ -47,9 +47,9 @@
           }
         }
       })
-      .state("postRecipe", {
-        url: "/postRecipe/:user",
-        templateUrl: "templates/postRecipe.html",
+      .state("newRecipe", {
+        url: "/recipe/new/",
+        templateUrl: "templates/newRecipe.html",
         controller: "RecipeController as vm"
       })
       .state('myRecipes', {
@@ -61,8 +61,7 @@
         url: '/recipe-detail/:label',
         templateUrl: "templates/myRecipeDetail.html",
         controller: "RecipeController as vm"
-      })
-      ;
+      });
 
       $urlRouterProvider.otherwise("/");
   }
