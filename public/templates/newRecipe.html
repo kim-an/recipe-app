@@ -10,7 +10,7 @@
     </div>
     <div class="form-group">
       <label for="serving-size">Serving Size: </label>
-      <input type="text" class="form-control" id="servingSize">
+      <input ng-model="vm.newRecipe.yield" type="text" class="form-control">
     </div>
     <div class="form-group">
       <label for="ingredients">Ingredients: </label>
@@ -25,15 +25,19 @@
       <label for="instructions">Instructions: </label>
       <span ng-repeat="i in vm.newRecipe.instructions track by $index">
         <input ng-model="vm.newRecipe.instructions[$index]" type="text" class="form-control" name="instructions">
-        <button ng-click="vm.newRecipe.instructions.splice($index, 1)">X</button>
-        <button class="btn btn-default addButton" type="button" ng-click="vm.newRecipe.instructions.push('')"><i class="minus"></i></button>
+        <button ng-click="vm.newRecipe.instructions.splice($index, 1)">
+          X
+        </button>
+        <button class="btn btn-default addButton" type="button" ng-click="vm.newRecipe.instructions.push('')">
+          <i class="minus"></i>
+        </button>
       </span>
     </div>
 
   <div class="form-group">
-      <button  ng-click="vm.postRecipe()" type="submit" class="btn btn-default">Post Recipe!</button>
-    </div>
-  </form>
+    <button ng-click="vm.createRecipe()" class="btn btn-default">Create Recipe!</button>
+  </div>
+</form>
 
 </div>
 

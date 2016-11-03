@@ -16,7 +16,8 @@
       getRecipe: getRecipe,
       postRecipe: postRecipe,
       getMyRecipes: getMyRecipes,
-      deleteRecipe: deleteRecipe
+      deleteRecipe: deleteRecipe,
+      updateRecipe: updateRecipe
     };
 
     return service;
@@ -53,6 +54,10 @@
 
     function deleteRecipe(recipe) {
       return $http.delete('/api/recipes/' + recipe._id);
+    }
+
+    function updateRecipe(recipe) {
+      return $http.put('/api/recipes/' + recipe._id, recipe);
     }
 
   }

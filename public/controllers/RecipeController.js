@@ -8,7 +8,7 @@
 
   function RecipeController($http, $state, $stateParams, UserService, RecipeService) {
     var vm = this;
-    vm.postRecipe = postRecipe;
+    vm.createRecipe = createRecipe;
     vm.errors = null;
 
     vm.newRecipe = {
@@ -29,8 +29,8 @@
       });
 
 
-    function postRecipe() {
-      console.log("recipeController")
+    function createRecipe() {
+      console.log("createRecipe...")
       RecipeService.postRecipe(vm.newRecipe)
         .then(newRecipe => {
           $state.go('welcome');
@@ -39,6 +39,18 @@
 
     vm.recipeDetails = function(recipe) {
       $state.go('myRecipeDetail', {label: recipe.label});
+    }
+
+    vm.update = function(recipe) {
+      console.log(recipe)
+      RecipeService.updateRecipe(recipe)
+        .then(function() {
+          RecipeService.getMyRecipes()
+          .then(myRecipe => {
+            $state.go('myRecipeDetail')
+          })
+        })
+        .catch(console.log)
     }
 
     vm.deleteRecipe = function(recipe) {
