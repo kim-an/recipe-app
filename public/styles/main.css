@@ -4,6 +4,10 @@ body {
   background-size: cover;
 }
 
+h1 {
+  color: white;
+}
+
 #ciy-logo {
   width: 200px;
 }
