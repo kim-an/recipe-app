@@ -13,7 +13,24 @@
 </head>
 <body ng-controller="LoginController as authCtrl">
 
-  <nav class="navbar navbar-defult">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a ui-sref="login"><input ng-hide="authCtrl.getUser()" ng-model="authCtrl.username" type="text" placeholder="Username"></a>
+  <a ui-sref="login"><input ng-hide="authCtrl.getUser()" ng-model="authCtrl.password" type="password" placeholder="Password"></a>
+  <a ui-sref="login" ng-hide="authCtrl.getUser()" ng-click="authCtrl.login()" id="hideNav">Login</a>
+  <a ui-sref="myRecipes" ng-show="authCtrl.getUser()" ng-click="authCtrl.myRecipes()" id="myRecipe">My Recipes</a>
+  <a ui-sref="newRecipe" ng-show="authCtrl.getUser()" id="hideNav">Create a Recipe</a>
+  <a ui-sref="signup" ng-hide="authCtrl.getUser()" ng-click="authCtrl.signup()" id="signup">Sign Up</a>
+  <a ui-sref="logout" ng-show="authCtrl.getUser()" ng-click="authCtrl.logout()" id="logout">Log Out</a>
+</div>
+
+<span onclick="openNav()">MENU ☰</span>
+
+<div id="main">
+  <main class="content" ui-view></main>
+</div>
+
+ <!--  <nav class="navbar navbar-defult">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Recipe Wars</a>
       <li ng-show="authCtrl.getUser()"><button class="btn btn-default navbar-btn" ng-click="authCtrl.myRecipes()">My Recipes</button></li>
@@ -35,11 +52,12 @@
       </ul>
       </form>
     </div>
-  </nav>
+  </nav> -->
 
-  <main class="content" ui-view></main>
+<!--   <main class="content" ui-view></main> -->
   <script src="js/app.js"></script>
   <script src="js/appRoutes.js"></script>
+  <script src="js/main.js"></script>
   <script src="controllers/HomeController.js"></script>
   <script src="controllers/UserController.js"></script>
   <script src="controllers/LoginController.js"></script>

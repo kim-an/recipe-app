@@ -14,6 +14,11 @@
         templateUrl: "templates/home.html",
         controller: "HomeController as vm"
       })
+      .state("login", {
+        url: "/login",
+        templateUrl: "templates/welcome.html",
+        controller: "LoginController as authCtrl"
+      })
       .state("welcome", {
         url: "/welcome",
         resolve: {
@@ -61,6 +66,11 @@
         url: '/recipe-detail/:label',
         templateUrl: "templates/myRecipeDetail.html",
         controller: "RecipeController as vm"
+      })
+      .state("logout", {
+        url: '/logout',
+        templateUrl: "templates/home.html",
+        controller: "LoginController as authCtrl"
       });
 
       $urlRouterProvider.otherwise("/");

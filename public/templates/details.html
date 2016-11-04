@@ -1,20 +1,22 @@
-<div class="container" id="recipeTitle">
-  <h1>{{vm.recipe.label}}</h1>
-</div>
+<div class="container" id="recipeDetails">
+  <div class="container" id="recipeTitle">
+    <h3 style="color: black">{{vm.recipe.label}}</h3>
+  </div>
 
-<div class="container">
-  <img ng-src="{{vm.recipe.image}}" alt="food-image">
-</div>
+  <div class="container">
+    <img ng-src="{{vm.recipe.image}}" alt="food-image">
+  </div>
 
-<div class="container" id="servingSize">
-  <p>Serving Size: {{vm.recipe.yield}}</p>
-</div>
+  <div class="container" id="servingSize">
+    <p>Serving Size: {{vm.recipe.yield}}</p>
+  </div>
 
-<div class="container" id="ingredients">
-  <ul>Ingredient List</ul>
-    <li ng-repeat="i in vm.recipe.ingredientLines">{{i}}</li>
-</div>
+  <div class="container" id="ingredients">
+    <ul>Ingredient List</ul>
+      <li ng-repeat="i in vm.recipe.ingredientLines">{{i}}</li>
+  </div>
 
-<div class="container" id="instructions">
-  <p><a href="{{vm.recipe.url}}" target="_blank">View Full Instructions</a></p>
+  <div class="container" id="instructions">
+    <p><a href="{{vm.recipe.url}}" target="_blank">View Full Instructions</a></p>
+  </div>
 </div>
