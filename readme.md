@@ -1,4 +1,4 @@
-![:CIY_logo](public/images/CIY_hp_readme.png "Logo")
+![:CIY_logo](public/images/CIY_logo.png "Logo")
 
 ####All of your recipes in one place.
 
@@ -24,7 +24,7 @@ Once signed up, users will be able to create their own recipes and have them all
 under "My Recipes".  You can search for recipes whether or not you are signed in.
 
 ## <a name="#technologies">Technologies Used</a>
-![MEAN-Icon](/public/images/MEAN-icon_hp_readme.png "MEAN")
+![MEAN-Icon](/public/images/MEAN-Icon.png "MEAN")
 
 * **3rd Party API:** edamam.com
 * **Lanugages:** HTML4, CSS3, JavaScript
